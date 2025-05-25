@@ -14,9 +14,31 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: white;
             min-height: 100vh;
-            padding: 20px;
+            margin: 0;
+            padding: 10px;
+        }
+
+        /* iframe 모드 감지 및 최적화 */
+        body.iframe-mode {
+            background: white !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        body.iframe-mode .container {
+            background: white !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            max-width: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        body.iframe-mode .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            padding: 20px 15px !important;
         }
 
         .container {
@@ -455,6 +477,12 @@
 
         // 페이지 로드시 URL 파라미터 확인
         document.addEventListener('DOMContentLoaded', function() {
+            // iframe 모드 감지
+            const isInIframe = window.parent !== window;
+            if (isInIframe) {
+                document.body.classList.add('iframe-mode');
+            }
+            
             const urlParams = new URLSearchParams(window.location.search);
             const currentTab = urlParams.get('tab') || 'application';
             switchTab(currentTab);
