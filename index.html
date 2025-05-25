@@ -424,11 +424,12 @@
             '자동차세환급': 'https://bionuri.tistory.com/entry/2025%EB%85%84-%EC%9E%90%EB%8F%99%EC%B0%A8%EC%84%B8-%EC%A0%88%EC%84%B8%EC%99%80-%ED%99%98%EA%B8%89-%EA%BC%AD-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%ED%95%B5%EC%8B%AC-%EA%B0%80%EC%9D%B4%EB%93%9C'
         };
 
-        // 링크 열기
+        // 링크 열기 (iframe 내부에서 이동)
         function openLink(type) {
             const url = linkMap[type];
             if (url) {
-                window.open(url, '_blank');
+                // 현재 창에서 이동 (새 창 아님)
+                window.location.href = url;
             }
         }
 
@@ -476,4 +477,3 @@
     </script>
 </body>
 </html>
-
